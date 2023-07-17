@@ -1,6 +1,8 @@
 package com.bootcamp.bank.saldos.util;
 
 import com.bootcamp.bank.saldos.model.FechasBean;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +18,8 @@ import java.util.Date;
 
 @Component
 @Log4j2
-public class Util {
-
-    private Util() {
-    }
+@NoArgsConstructor(access= AccessLevel.PRIVATE)
+public final class Util {
 
     private static SecureRandom random = new SecureRandom();
     public static int generateRandomNumber(int min, int max) {
