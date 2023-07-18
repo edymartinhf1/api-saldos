@@ -129,7 +129,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                     resumenDiario.setCuentas(response.getCuentas());
                     return resumenDiario;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
         response.setResumenDiario(dias);
         return obtenerTransaccionesPorDia(response);
@@ -155,7 +155,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                cuentaN.setDepositos(cuentaCalculos.getDepositos());
                cuentaN.setRetiros(cuentaCalculos.getRetiros());
                return cuentaN;
-            }).collect(Collectors.toList());
+            }).toList();
             // saldo resumen diario por cada producto credito
             List<CreditoProducto> creditosconPromedio = resumenDiario.getCreditos().stream().map(credito->{
                 CreditoProducto creditoN=new CreditoProducto();
@@ -166,7 +166,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                 creditoN.setConsumos(creditoCalculos.getConsumos());
                 creditoN.setPagos(creditoCalculos.getPagos());
                 return creditoN;
-            }).collect(Collectors.toList());
+            }).toList();
 
             resumenDiario.setCreditos(creditosconPromedio);
             resumenDiario.setCuentas(cuentasConPromedio);
@@ -234,13 +234,13 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                         return resumenCta;
                     }).collect(Collectors.toList());
                 })
-                .collect(Collectors.toList());
+                .toList();
 
 
         List<ResumenCuentaDiaria> flats =
                 resumenCtaDiaria.stream()
                         .flatMap(List::stream)
-                        .collect(Collectors.toList());
+                        .toList();
 
         Map<String, List<ResumenCuentaDiaria>> listasPorCuenta = flats.stream()
                 .collect(groupingBy(e->e.getNumeroCuenta()));
@@ -252,7 +252,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
             List<ResumenCuentaDiaria> list= this.calcularSaldoPordia(movDiaCuenta);
             listasP.put(n,list);
             return listasP;
-        }).collect(Collectors.toList());
+        }).toList();
 
         reporteSaldoDiario.setResumenCtasBancariasDiario(listaCuentasPorDia);
         log.info(" >>>> "+listaCuentasPorDia.toString());
@@ -277,16 +277,16 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                                 resumenCta.setConsumos(credito.getConsumos());
                                 resumenCta.setPagos(credito.getPagos());
                                 return resumenCta;
-                            }).collect(Collectors.toList());
+                            }).toList();
                     return lista;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
 
         List<ResumenCreditoDiario> flats =
                 resumenCreditoDiario.stream()
                         .flatMap(List::stream)
-                        .collect(Collectors.toList());
+                        .toList();
 
         Map<String, List<ResumenCreditoDiario>> listasPorCuenta = flats.stream()
                 .collect(groupingBy(e->e.getNumeroCredito()));
@@ -298,7 +298,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
             List<ResumenCreditoDiario> list= this.calcularCreditoSaldoPordia(movDiaCuenta);
             listasP.put(n,list);
             return listasP;
-        }).collect(Collectors.toList());
+        }).toList();
 
         reporteSaldoDiario.setResumenProductosCreditosDiario (listaCuentasPorDia);
         log.info(" >>>> "+listaCuentasPorDia.toString());
@@ -324,7 +324,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                     resum.setPromedioDiario(resum.getSaldo()>0?resum.getSaldo()/numeroDiasMes:0.00);
                     return resum;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
         return collect;
     }
@@ -345,7 +345,7 @@ public class SaldoResumenServiceImpl implements SaldoResumenService {
                     resum.setPromedioDiario(resum.getSaldo()>0?resum.getSaldo()/numeroDiasMes:0.00);
                     return resum;
                 })
-                .collect(Collectors.toList());
+                .toList();
 
         return collect;
     }
