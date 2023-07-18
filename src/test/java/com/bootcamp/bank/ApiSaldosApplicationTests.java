@@ -1,5 +1,6 @@
 package com.bootcamp.bank;
 
+import com.bootcamp.bank.saldos.clients.ClientApiConsumos;
 import com.bootcamp.bank.saldos.service.SaldoResumenService;
 import com.bootcamp.bank.saldos.service.SaldoService;
 import org.junit.jupiter.api.Test;
@@ -14,10 +15,15 @@ class ApiSaldosApplicationTests {
 	private SaldoResumenService saldoResumenService;
 	@Autowired
 	private SaldoService saldoService;
+
+	@Autowired
+	private ClientApiConsumos clientApiConsumos;
 	@Test
 	void contextLoads() {
 		assertThat(saldoResumenService).isNotNull();
 		assertThat(saldoService).isNotNull();
 	}
+
+
 
 }
