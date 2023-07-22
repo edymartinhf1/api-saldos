@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+
+/**
+ * Clase Saldo Resumen
+ * Entregable 2
+ */
 @RestController
 @RequestMapping("/saldos/resumen")
 @Log4j2
