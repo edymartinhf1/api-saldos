@@ -7,7 +7,7 @@ public class Cliente {
     private String id;
     private String tipoCli;
     private String tipoDocumento;
-    private String nroDocumento;
+    private String numeroDocumento;
     private String nombre;
     private String razonSocial;
     private Double limiteCredito;
